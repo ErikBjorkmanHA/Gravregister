@@ -1,0 +1,147 @@
+
+
+.background{
+    display:inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: auto;
+    height: auto;
+    user-select: none;
+    
+}
+
+.graveyard{
+
+    top: 12%;
+    left: 12%;
+
+    display: grid;
+    grid-template-rows: 75% 25%;
+    grid-template-columns: 1fr 1fr 1fr;
+
+
+
+    column-gap: 100px;
+    padding: 10px;
+    transform:scale(0.3);
+    transform-origin:top left;
+    transition: 0.1s ease;
+    width: 4900px;
+    height:3500px;
+    border: 10px solid rgb(53, 53, 53);
+    border-radius: 10px;
+
+    position:fixed;
+    font-weight: bold;
+    
+}
+
+.main-grid{
+    display: grid;
+
+    grid-template-areas: "area area area area"
+                         "area area area area"
+                         "area area area area";
+
+    row-gap: 175px;
+    column-gap: 150px;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 25px;
+
+    grid-column: 2 / span 2;
+    grid-row: 1 /span 2;
+
+  }
+
+.church-area-grid{
+    display:grid;
+    gap: 25px;
+    padding: 10px;
+
+    
+    grid-column: 1 / span 1;
+    grid-row: 1 /span 1;
+
+    grid-template-rows: 32% 38% 15%;
+    grid-template-columns: 40% 60%; 
+    width: 90%;
+    height: 65%;
+}
+
+#K1{
+    text-align: start;
+    margin-right: 200px;
+    grid-column: 1/span 3;
+    grid-row: 1/span 3;
+}
+
+/*utrymmet runt kyrkan, gravområden K2, K3 och K4*/
+.church-grid{
+    grid-column: 2/span 1;
+    grid-row: 2/span 2;
+    display:grid;
+    grid-template-rows:8% 45% 14% 39%;
+    grid-template-columns: 20% 23% 15% 20% 22%;
+    width:fit-content;
+    height: fit-content;
+}
+
+
+#K2{
+    grid-column: 4/span 2;
+    grid-row: 2/span 1;
+    transform:rotate(-90deg);
+    width: fit-content;
+    height: max-content;
+    display:inline-block;
+    align-items: center;
+}
+
+#K3{
+    display:inline-block;
+    grid-column: 5/span 1;
+    grid-row: 3/span 1;
+    margin-left: -75px;
+    margin-top: -50px;
+}
+
+#K4{
+    grid-column: 1/span 5;
+    grid-row: 4/span 1;
+
+}
+
+.area{
+
+    height: 200px;
+
+    font-size:20px;
+    height:fit-content;
+    width: max-content;
+   
+    padding: 5px;
+    overflow: hidden;
+}
+
+
+#IA{
+    text-align: end;
+}
+
+#IIIA{
+    text-align: end;
+    margin-left: 100px;
+}
+
+
+
+/* Gravar med unika mått, t.ex rotation eller storlek*/
+
+#K1-g-8{
+    line-height: 50px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 10px 0;
+}

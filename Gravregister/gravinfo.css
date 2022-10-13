@@ -1,0 +1,101 @@
+#gravinfo{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width:  70%;
+    height: 70%;
+    background-color: rgb(200, 200, 200);
+    border-radius: 5px;
+    border: 7px solid rgb(53, 53, 53);
+    display: none;
+}
+
+.close-button{
+    background-color: rgb(255, 70, 70);
+    right:0px;
+    position: absolute;
+
+    border: 2px solid rgb(53, 53, 53);
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+h2{
+    text-align: center;
+    user-select: none;
+}
+
+#inner_display{
+    position: relative;
+    display:grid;
+    border: 2px solid rgb(53, 53, 53);
+    border-radius: 5px;
+    width: 90%;
+    height: 80%;
+    left: 5%;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 60% 40%;
+}
+
+.grave_image{
+    grid-column: 1  / span 1;
+    grid-row:1 / span 2;
+}
+
+.first_slot{
+    grid-column: 2  / span 1;
+    grid-row:1 / span 1;
+    padding-top: 25px;
+    text-align: left;
+
+}
+
+.second_slot{
+    grid-column: 3  / span 1;
+    grid-row:1 / span 1;
+    padding-top: 25px;
+    text-align: left;
+    visibility: hidden;
+    
+}
+
+.general_info{
+    grid-column: 2  / span 2;
+    grid-row:2 / span 1;
+    display:grid;
+    grid-template-columns:50% 50%;
+    grid-template-rows: 50% 50%;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.general_info > div > p{
+    font-weight: normal;
+    padding-left: 20px;
+}
+
+.owner{
+    grid-column: 1;
+    grid-row:1
+}
+
+.grave_type{
+    grid-column: 1;
+    grid-row:2;
+}
+
+.expired{
+    grid-column: 2;
+    grid-row:1;
+}
+
+.comment{
+    grid-column: 2;
+    grid-row:2;
+}
+
+
+.table>th{
+    font-weight: bold;
+    border: 1px solid rgb(53, 53, 53);
+}

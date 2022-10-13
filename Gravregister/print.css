@@ -1,0 +1,10 @@
+@media print{
+    .graveyard{
+
+        top: 12%;
+        left: 1.5%;
+    
+        transform:scale(0.21);
+    }
+
+}
