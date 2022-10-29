@@ -22,7 +22,9 @@ window.onload = function() {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
           if (this.readyState === 4 && this.status === 200) {
-            document.getElementById("inner_display").innerHTML = this.responseText;
+              var responseArray = this.responseText.split("||");
+            document.getElementById("inner_display").innerHTML = responseArray[0];
+            document.getElementById("editmode").innerHTML = responseArray[1];
           }
         };
         xmlhttp.open("GET", "data.php?graveId=" + graveId, true);
@@ -164,5 +166,41 @@ function getScale(){
 }
 
 function closeWindow(){
-  document.getElementById("gravinfo").style.display = "none";
+    var editwindow = document.getElementById("editmode");
+    var buttontext = document.getElementById("editbutton");
+    document.getElementById("gravinfo").style.display = "none";
+    if(editwindow.style.visibility === "visible") {
+        editwindow.style.visibility = "hidden";
+        buttontext.innerHTML = "Redigera";
+    }
+}
+
+function changeEditMode(){
+   var editwindow = document.getElementById("editmode");
+   var buttontext = document.getElementById("editbutton");
+   console.log(editwindow.style.visibility);
+   if(editwindow.style.visibility === "hidden"){
+      editwindow.style.visibility = "visible";
+      buttontext.innerHTML = "Spara";
+   } else {
+     editwindow.style.visibility = "hidden";
+     buttontext.innerHTML = "Redigera";
+   }
+
+}
+
+function addPersonRow(){
+     var table = document.getElementById("editTable");
+     var row = table.insertRow(table.rows.length);
+     var cell1 = row.insertCell(0);
+     var cell2 = row.insertCell(0);
+     var cell3 = row.insertCell(0);
+
+     cell1.innerHTML = "<input type=text style='width:100%' maxLength='10'>";
+     cell2.innerHTML = "<input type=text style='width:60%' maxLength='10'>";
+     cell3.innerHTML = "<input type=text style='width:80%' maxLength='50'>";
+
+     if(table.rows.length >= 9){
+         document.getElementById("addRow").style.visibility = "hidden";
+     }
 }

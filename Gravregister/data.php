@@ -20,6 +20,7 @@ if($grave->num_rows == 1){
     $persons =  $conn->query($sqlPerson);
     if($persons){
         $innerData = "";
+        $innerDataEdit = "";
         $mostRecent = "";
 
         while($row = $persons->fetch_assoc()) {
@@ -32,9 +33,17 @@ if($grave->num_rows == 1){
             $innerData =
                 $innerData.
                 "<tr>
-                    <td>".htmlspecialchars($row['firstname']). " " .htmlspecialchars($row['lastname'])."</td>
-                    <td>".htmlspecialchars($row['buried'])."</td>
-                    <td>".htmlspecialchars($row['GraveType'])."</td>
+                    <td style = 'width:40%'>".htmlspecialchars($row['firstname']). " " .htmlspecialchars($row['lastname'])."</td>
+                    <td style = 'width:10%'>".htmlspecialchars($row['buried'])."</td>
+                    <td style = 'width:10%'>".htmlspecialchars($row['GraveType'])."</td>
+                </tr>";
+
+            $innerDataEdit =
+                $innerDataEdit.
+                "<tr>
+                    <td style = 'width:40%'><input type = text style = 'width:80%' maxlength='30' value = '".htmlspecialchars($row['firstname']). " " .htmlspecialchars($row['lastname'])."'></td>
+                    <td style = 'width:10%'><input type = text style = 'width:60%' maxlength='10' value = '".htmlspecialchars($row['buried'])."'></td>
+                    <td style = 'width:10%'><input type = text style = 'width:100%' maxlength='10' value = '".htmlspecialchars($row['GraveType'])."'></td>
                 </tr>";
         }
 
@@ -47,6 +56,7 @@ if($grave->num_rows == 1){
         }
 
         $generalInfo = "";
+        $generalInfoEdit = "";
 
         while($row = $grave->fetch_assoc()) {
             $generalInfo = $generalInfo."
@@ -66,6 +76,24 @@ if($grave->num_rows == 1){
                 <p> ".htmlspecialchars($row['comment'])."</p>
             </div>
         ";
+
+        $generalInfoEdit = $generalInfoEdit."
+        <div class = 'owner'>
+        Gravrättsinnehavare:
+        <br>
+        <textarea  rows = 3; style = 'width: 50%; resize: none; margin-left: 20px; margin-top: 15px;' maxlength='100' >".htmlspecialchars($row['graveowner'])."</textarea>
+        </div>
+        <div class = 'expired'>
+        Utgångsdatum:
+        <br>
+        <p>".htmlspecialchars($expired)."</p>
+        </div>
+        <div class = 'comment'>
+        Kommentar
+        <br>
+        <textarea  rows = 4;  style = 'width: 50%; overflow:hidden; resize: none; margin-left: 20px; margin-top: 15px;' >".htmlspecialchars($row['comment'])."</textarea>
+        </div>
+        ";
     }
 
     echo"
@@ -73,9 +101,9 @@ if($grave->num_rows == 1){
             <img src='grafik/testgrav.png' alt = 'Grav bild' style='pointer-events: none; top:50%'>
     </div>
     <div class = 'first_slot' id = 'first_slot'>
-        <table style = 'width:100%'>
+        <table style ='border-spacing: 5px;'>
         <tr>
-            <th style = 'width:fit-content'>Namn</th>
+            <th>Namn</th>
             <th> Begravningsdatum</th>
             <th> Typ</th>
         </tr>
@@ -88,6 +116,29 @@ if($grave->num_rows == 1){
         ".$generalInfo."
     </div>
         ";
+
+    echo " || "; //delimiter
+
+    echo "
+    <div class = 'grave_image'>
+        <img src='grafik/testgrav.png' alt = 'Grav bild' style='pointer-events: none; top:50%'>
+    </div>
+    <div class = 'first_slot' id = 'first_slot'>
+        <table id = 'editTable' style ='border-spacing: 5px;'>
+        <tr>
+            <th>Namn</th>
+            <th> Begravningsdatum</th>
+            <th> Typ</th>
+        </tr>
+            ".$innerDataEdit." 
+        </table>
+        <button id = 'addRow' style = 'margin-left:6px' onclick = 'addPersonRow()'>Lägg till rad</button>
+    </div>
+    <div class = 'second_slot'>
+    </div>
+    <div class = 'general_info'>
+        ".$generalInfoEdit."
+    </div>";
     }
 } else {
     echo "<p style = 'position:absolute;align-self: center;justify-self: center;font-size: 50px;'>Graven är tom</p>";

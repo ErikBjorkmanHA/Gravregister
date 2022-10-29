@@ -25,8 +25,8 @@ h2{
     user-select: none;
 }
 
-#inner_display{
-    position: relative;
+.inner_display{
+    position: absolute;
     display:grid;
     border: 2px solid rgb(53, 53, 53);
     border-radius: 5px;
@@ -35,6 +35,12 @@ h2{
     left: 5%;
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 60% 40%;
+}
+
+#editbutton{
+    position: relative;
+    left: 47%;
+    top:84%;
 }
 
 .grave_image{
@@ -93,9 +99,19 @@ h2{
     grid-column: 2;
     grid-row:2;
 }
+table{
+    /*border: 2px solid red;*/
+    width:100%
 
+}
+td {
+    /*border: 2px solid rgb(53, 53, 53);*/
+    padding:2px;
 
-.table>th{
-    font-weight: bold;
-    border: 1px solid rgb(53, 53, 53);
+}
+
+input{
+    margin-right: 20px;
+    font-size: 12px;
+    font-family: sans-serif;
 }
